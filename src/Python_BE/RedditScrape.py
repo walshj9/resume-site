@@ -41,15 +41,16 @@ chars_to_replace = {
     '-' : '',
     ':' : ''
 }
-timestamp = timestamp.translate(str.maketrans(chars_to_replace)) #timestamp format YYYYMMDDhhmm
-
+timestamp = timestamp.translate(str.maketrans(chars_to_replace)) #timestamp format YYYYMMDD-hhmm
+timestamp = timestamp[:8] + '-' + timestamp[8:]
+print(timestamp)
 #id, author, title, score, num_comments, subreddit, permalink, over_18
-fields = ['id', 'author', 'title', 'score','num_comments', 'subreddit', 'permalink', 'over_18']
-with open(f'{timestamp}.csv', 'w') as file:
-    writer = csv.writer(file)
-    writer.writerow(fields)
-    for submission in reddit.subreddit("all").hot(limit=100): 
-        data = [submission.id, submission.author, submission.title, submission.score,
-        submission.num_comments, submission.subreddit, submission.permalink, submission.over_18]
-        writer.writerow(data)
+# fields = ['id', 'author', 'title', 'score','num_comments', 'subreddit', 'permalink', 'over_18']
+# with open(f'{timestamp}.csv', 'w') as file:
+#     writer = csv.writer(file)
+#     writer.writerow(fields)
+#     for submission in reddit.subreddit("all").hot(limit=100): 
+#         data = [submission.id, submission.author, submission.title, submission.score,
+#         submission.num_comments, submission.subreddit, submission.permalink, submission.over_18]
+#         writer.writerow(data)
     
