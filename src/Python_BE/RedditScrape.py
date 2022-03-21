@@ -51,4 +51,4 @@ with open(f'{timestamp}.csv', 'w') as file:
         data = [submission.id, submission.author, submission.title, submission.score,
         submission.num_comments, submission.subreddit, submission.permalink, submission.over_18]
         writer.writerow(data)
-    
+file.close()
